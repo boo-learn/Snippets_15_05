@@ -49,3 +49,9 @@ def snippet_create(request):
         if form.is_valid():
             form.save()
         return redirect('snippets-list')
+
+
+def snippet_delete(request, snippet_id):
+    snippet = Snippet.objects.get(id=snippet_id)
+    snippet.delete()
+    return redirect('snippets-list')
