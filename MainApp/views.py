@@ -10,13 +10,21 @@ def index_page(request):
     return render(request, 'pages/index.html', context)
 
 
-def add_snippet_page(request):
-    form = SnippetForm()
-    context = {
-        'pagename': 'Добавление нового сниппета',
-        'form': form
-    }
-    return render(request, 'pages/add_snippet.html', context)
+def add_snippet(request):
+    if request.method == "GET":  # получить страницу с формой
+        form = SnippetForm()
+        context = {
+            'pagename': 'Добавление нового сниппета',
+            'form': form
+        }
+        return render(request, 'pages/add_snippet.html', context)
+    elif request.method == "POST":  # получаем данные формы
+        form = SnippetForm(request.POST)
+        if form.is_valid():
+            snippet = form.save(commit=False)
+            snippet.user = request.user
+            snippet.save()
+        return redirect('snippets-list')
 
 
 def snippets_page(request):
@@ -35,21 +43,6 @@ def snippet_detail(request, snippet_id):
         'snippet': snippet
     }
     return render(request, 'pages/snippet_detail.html', context)
-
-
-def snippet_create(request):
-    if request.method == "POST":
-        # form_data = request.POST
-        # snippet = Snippet(
-        #     name=form_data['name'],
-        #     lang=form_data['lang'],
-        #     code=form_data['code'],
-        # )
-        # snippet.save()
-        form = SnippetForm(request.POST)
-        if form.is_valid():
-            form.save()
-        return redirect('snippets-list')
 
 
 def snippet_delete(request, snippet_id):
