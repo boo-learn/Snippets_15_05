@@ -91,3 +91,11 @@ def registration(request):
             }
             return render(request, 'pages/registration.html', context)
 
+
+def snippets_my(request):
+    my_snippet = Snippet.objects.filter(user=request.user)
+    context = {
+        'pagename': 'Мои сниппеты',
+        'snippets': my_snippet
+    }
+    return render(request, 'pages/view_snippets.html', context)

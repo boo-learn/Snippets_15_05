@@ -8,6 +8,7 @@ urlpatterns = [
     path('snippets/add', views.add_snippet, name='snippets-add'),
     path('snippet/<int:snippet_id>/delete', views.snippet_delete, name='snippet-delete'),
     path('snippets/list', views.snippets_page, name='snippets-list'),
+    path('snippets/my', views.snippets_my, name='snippets-my'),
     path('snippet/<int:snippet_id>', views.snippet_detail, name='snippet-detail'),
     path('register', views.registration, name='registration'),
     path('login', views.login, name='login'),
