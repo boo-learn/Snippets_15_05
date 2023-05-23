@@ -1,4 +1,5 @@
 from django.http import Http404
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from MainApp.models import Snippet
@@ -92,6 +93,7 @@ def registration(request):
             return render(request, 'pages/registration.html', context)
 
 
+@login_required
 def snippets_my(request):
     my_snippet = Snippet.objects.filter(user=request.user)
     context = {
