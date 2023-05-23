@@ -82,6 +82,7 @@
                         <th scope="col">Название</th>
                         <th scope="col">Автор</th>
                         <th scope="col">Дата создания</th>
+                        <th scope="col">Приватный</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -96,6 +97,7 @@
                             </td>
                             <td>{{ snippet.user.username }}</td>
                             <td>{{ snippet.creation_date }}</td>
+                            <td>{{ snippet.private }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
