@@ -67,9 +67,21 @@
 
         <div class="row">
             <div class="col">
-                <p>На данной страницы будут отображаться все созданные сниппеты.</p>
-                <p>Пока тут просто пример, но скоро заменим реальными сниппетами из БД!</p>
+                <p>На данной страницы отображаются все созданные сниппеты.</p>
                 <hr>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <form method="get" action="">
+                    <select name="lang">
+                        <option value="js">Javascript</option>
+                        <option value="py">Python</option>
+                        <option value="cpp">C++</option>
+                    </select>
+                    <button type="submit">Применить</button>
+                </form>
             </div>
         </div>
 
@@ -81,6 +93,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Название</th>
                         <th scope="col">Автор</th>
+                        <th scope="col">Язык</th>
                         <th scope="col">Дата создания</th>
                         <th scope="col">Приватный</th>
                     </tr>
@@ -96,6 +109,7 @@
                                 </a>
                             </td>
                             <td>{{ snippet.user.username }}</td>
+                            <td>{{ snippet.lang }}</td>
                             <td>{{ snippet.creation_date }}</td>
                             <td>{{ snippet.private }}</td>
                         </tr>

@@ -30,6 +30,9 @@ def add_snippet(request):
 
 def snippets_page(request):
     snippets = Snippet.objects.all()
+    lang = request.GET.get("lang")
+    if lang:
+        snippets = snippets.filter(lang=lang)
     context = {
         'pagename': 'Просмотр сниппетов',
         'snippets': snippets
