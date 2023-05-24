@@ -76,11 +76,13 @@
             <div class="col">
                 <form method="get" action="">
                     <select name="lang">
-                        <option value="js">Javascript</option>
-                        <option value="py">Python</option>
-                        <option value="cpp">C++</option>
+                        <option>----</option>
+                        <option value="js" {% if lang == 'js' %} selected {% endif %} >Javascript</option>
+                        <option value="py" {% if lang == 'py' %} selected {% endif %}>Python</option>
+                        <option value="cpp" {% if lang == 'cpp' %} selected {% endif %}>C++</option>
                     </select>
                     <button type="submit">Применить</button>
+                    <a href="...">Сбросить</a>
                 </form>
             </div>
         </div>

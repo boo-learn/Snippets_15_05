@@ -35,7 +35,8 @@ def snippets_page(request):
         snippets = snippets.filter(lang=lang)
     context = {
         'pagename': 'Просмотр сниппетов',
-        'snippets': snippets
+        'snippets': snippets,
+        'lang': lang
     }
     return render(request, 'pages/view_snippets.html', context)
 
