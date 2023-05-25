@@ -1,7 +1,9 @@
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from django.contrib import auth
+from django.db.models import Count
 from MainApp.models import Snippet
 from MainApp.forms import SnippetForm, UserRegistrationForm, CommentForm
 
@@ -30,6 +32,7 @@ def add_snippet(request):
 
 def snippets_page(request):
     snippets = Snippet.objects.all()
+    users = User.objects.annotate(num_snippets=Count('snippets')).exclude(num_snippets=0)
     lang = request.GET.get("lang")
     sort = request.GET.get("sort")
     if lang:
@@ -39,7 +42,8 @@ def snippets_page(request):
     context = {
         'pagename': 'Просмотр сниппетов',
         'snippets': snippets,
-        'lang': lang
+        'lang': lang,
+        'users': users
     }
     return render(request, 'pages/view_snippets.html', context)
 

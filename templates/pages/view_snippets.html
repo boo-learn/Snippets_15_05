@@ -71,7 +71,7 @@
                 <hr>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col">
                 <form method="get" action="">
@@ -85,7 +85,20 @@
                     <a href="...">Сбросить</a>
                 </form>
             </div>
+            <div class="col">
+                <form method="get" action="">
+                    <select name="user">
+                        <option>----</option>
+                        {% for user in users %}
+                            <option value="{{ user.id }}">{{ user.username }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Применить</button>
+                    <a href="...">Сбросить</a>
+                </form>
+            </div>
         </div>
+
 
         <div class="row">
             <div class="col">

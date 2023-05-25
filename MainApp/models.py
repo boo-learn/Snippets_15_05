@@ -10,6 +10,7 @@ LANGS = (
 
 class Language(models.Model):
     name = models.CharField(max_length=32)
+    # icon = ...
     # shot_name = models.CharField(max_length=8)
 
     def __str__(self):
@@ -24,7 +25,7 @@ class Snippet(models.Model):
     code = models.TextField(max_length=5000)
     creation_date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE,
-                             blank=True, null=True)
+                             blank=True, null=True, related_name='snippets')
     private = models.BooleanField(default=True)
 
     def __str__(self):
