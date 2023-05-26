@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput, Textarea
 from MainApp.models import Snippet, Comment
 from django.contrib.auth.models import User
 from django.forms import CharField, PasswordInput
@@ -10,6 +10,13 @@ class SnippetForm(ModelForm):
         model = Snippet
         # Описываем поля, которые будем заполнять в форме
         fields = ['name', 'lang', 'code', 'private']
+        labels = {
+            "name": "", "lang": "", "code": "", "private": ""
+        }
+        widgets = {
+            "name": TextInput(attrs={"class": "demo", "placeholder":"название сниппета"}),
+            "code": Textarea(attrs={"placeholder":"код сниппета"})
+        }
 
 
 class UserRegistrationForm(ModelForm):
