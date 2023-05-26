@@ -29,6 +29,11 @@
                             </a>
                         </li>
                     {% endif %}
+                    <li class="form-inline">
+                        <a class="btn btn-outline-info" href="{% url 'users-rate' %}">
+                            Рейтинг
+                        </a>
+                    </li>
                 </ul>
                 {% if request.user.is_authenticated %}
                     <span style="color: white">Welcome, {{ request.user.username }}</span>

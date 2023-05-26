@@ -12,6 +12,7 @@ urlpatterns = [
     path('snippets/my', views.snippets_my, name='snippets-my'),
     path('snippet/<int:snippet_id>', views.snippet_detail, name='snippet-detail'),
     path('comment/add', views.comment_add, name="comment_add"),
+    path('users/rate', views.users_rate, name="users-rate"),
     path('register', views.registration, name='registration'),
     path('login', views.login, name='login'),
     path('logout', views.logout, name='logout'),

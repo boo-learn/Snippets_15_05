@@ -27,6 +27,8 @@ class Snippet(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE,
                              blank=True, null=True, related_name='snippets')
     private = models.BooleanField(default=True)
+    # likes = models.ManyToManyField(to=User)
+    # dislikes = models.ManyToManyField(to=User)
 
     def __str__(self):
         return f"Snippet {self.name} | {self.user}"

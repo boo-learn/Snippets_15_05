@@ -128,3 +128,12 @@ def comment_add(request):
             comment.snippet = snippet
             comment.save()
             return redirect(request.META.get('HTTP_REFERER', '/'))
+
+
+def users_rate(request):
+    users = User.objects.all().annotate(num_snippets=Count("snippets"))
+    context = {
+        'pagename': 'Рейтинг пользователей',
+        'users': users
+    }
+    return render(request, 'pages/users_rate.html', context)
