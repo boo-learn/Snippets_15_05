@@ -107,9 +107,12 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">
-                            <a href="?sort=name">Название</a>
-                            <i class="fa-solid fa-caret-up"></i>
-                            <i class="fa-solid fa-caret-down"></i>
+                            <a href="?sort={% if sort == 'name' %}-name{% else %}name{% endif %}">Название</a>
+                            {% if sort == 'name' %}
+                                <i class="fa-solid fa-caret-up"></i>
+                            {% elif sort == '-name' %}
+                                <i class="fa-solid fa-caret-down"></i>
+                            {% endif %}
                         </th>
                         <th scope="col">Автор</th>
                         <th scope="col">Язык</th>

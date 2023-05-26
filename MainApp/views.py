@@ -43,6 +43,7 @@ def snippets_page(request):
         'pagename': 'Просмотр сниппетов',
         'snippets': snippets,
         'lang': lang,
+        'sort': sort,
         'users': users
     }
     return render(request, 'pages/view_snippets.html', context)
